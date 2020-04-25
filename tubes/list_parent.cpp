@@ -15,29 +15,18 @@ void deallocate_parent(address_parent &P){
     delete P;
 }
 
-void insertFirst_parent(List_parent &LP, address_parent P){
-    if (next_parent(first_parent(LP)) != prev_parent(first_parent(LP))) { //kenapa kondisinya ribet amat si :3 cek yang di bawah coba
+void insertFirst_parent(List_parent &LP, address_parent P){  
+    if(first_parent(LP) == NULL){
+        first_parent(LP) = P;
+        next_parent(LP) = P;
+        prev_parent(LP) = P;
+    } else {
         next_parent(P) = first_parent(LP);
         prev_parent(P) = prev_parent(first_parent(LP));
         next_parent(prev_parent(first_parent(LP))) = P;
         prev_parent(first_parent(LP)) = P;
-        first_parent(L) = P;
-    } else {
         first_parent(LP) = P;
-        prev_parent(P) = P;
-        next_parent(P) = P;
     }
-/*  if(first_parent(LP) == NULL){
-    first_parent(LP) = P;
-    next_parent(LP) = P;
-    prev_parent(LP) = P;
-  } else {
-    next_parent(P) = first_parent(LP);
-    prev_parent(P) = prev_parent(first_parent(LP));
-    next_parent(prev_parent(first_parent(LP))) = P;
-    prev_parent(first_parent(LP)) = P;
-    first_parent(LP) = P;
-  } */
 }
 
 void insertAfter_parent(List_parent &LP, address_parent Prec, address_parent P){
@@ -47,25 +36,15 @@ void insertAfter_parent(List_parent &LP, address_parent Prec, address_parent P){
     prev_parent(P) = Prec;
 }
 
-void insertLast_parent(List_parent &LP, address P){ //cek kodingan di bawah coba
-    address Prec;
-    Prec = first_parent(LP);
-    if (first_parent(LP) == NULL){
-        insertFirst_parent(LP, P);
-    } else {
-        while(Prec != prev_parent(first_parent(LP))){
-            Prec = next(Prec);
-        }
-        insertAfter_parent(LP, Prec, P);
-    }
-    /*if(first_parent(LP) == NULL){
+void insertLast_parent(List_parent &LP, address P){
+    if(first_parent(LP) == NULL){
         insertFirst_parent(LP, P);
     } else {
         next_parent(P) = first_parent(LP);
         prev_parent(P) = prev_parent(first_parent(LP));
         next_parent(prev_parent(first_parent(LP))) = P;
         prev_parent(first_parent(LP)) = P;
-    }*/
+    }
 }
 
 void deleteFirst_parent(List_parent &LP, address_parent &P){
