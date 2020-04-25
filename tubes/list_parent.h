@@ -7,6 +7,10 @@
 #define ke_parent(P) P->parent
 
 #include <iostream>
+#include <stdlib.h>
+#include <conio.h>
+#include <string>
+
 
 using namespace std;
 
