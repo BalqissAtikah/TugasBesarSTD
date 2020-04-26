@@ -1,7 +1,6 @@
 #ifndef MLL_H_INCLUDED
 #define MLL_H_INCLUDED
 
-
 #include "list_parent.h"
 #include "list_child.h"
 #include <stdlib.h>
@@ -30,7 +29,7 @@ struct List_MLL{
 
 void createList_MLL(List_MLL &LM);
 address_MLL newElement_MLL(address_parent PP, address_child PC);
-void deallocate_MLL(address_MLL &P);
+void deallocate_MLL(address_MLL &PM);
 void insertFirst_MLL(List_MLL &LM, address_MLL PM);
 void insertAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL PM);
 void insertLast_MLL(List_MLL &LM, address_MLL PM);
@@ -38,7 +37,7 @@ void deleteFirst_MLL(List_MLL &LM, address_MLL &PM);
 void deleteAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL &PM);
 void deleteLast_MLL(List_MLL &LM, address_MLL &PM);
 void printList_MLL(List_MLL LM);
-address_MLL search_relasi(List_MLL LM, string x, string y);
+address_MLL search_MLL(List_MLL LM, string x, string y);
 void input_MLL(List_parent LP, List_child LC, List_MLL &LM);
 void delete_parent(List_MLL &LM, List_parent &LP, address_parent &PP);
 void delete_child(List_MLL &LM, List_child &LC, address_child &PC);

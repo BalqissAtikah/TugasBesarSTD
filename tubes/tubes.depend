@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1587872592 source:c:\users\user\documents\github\tugasbesarstd\tubes\main.cpp
+	"MLL.h"
+
+1587869089 c:\users\user\documents\github\tugasbesarstd\tubes\mll.h
+	"list_parent.h"
+	"list_child.h"
+	<stdlib.h>
+	<conio.h>
+	<string>
+	<iostream>
+
+1587873019 c:\users\user\documents\github\tugasbesarstd\tubes\list_parent.h
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+	<string>
+
+1587872624 c:\users\user\documents\github\tugasbesarstd\tubes\list_child.h
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+	<string>
+
+1587872839 source:c:\users\user\documents\github\tugasbesarstd\tubes\list_child.cpp
+	"list_child.h"
+
+1587872949 source:c:\users\user\documents\github\tugasbesarstd\tubes\list_parent.cpp
+	"list_parent.h"
+
+1587873073 source:c:\users\user\documents\github\tugasbesarstd\tubes\mll.cpp
+	"MLL.h"
+
