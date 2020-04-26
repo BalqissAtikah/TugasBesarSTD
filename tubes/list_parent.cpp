@@ -1,12 +1,12 @@
 #include "list_parent.h"
 
 void createList_parent(List_parent &LP){
-    first_parent(L) = NULL;
+    first_parent(LP) = NULL;
 }
 
 address_parent newElement_parent(parent x){
-    address_parent P = new elmList;
-    info_parent(P) = x
+    address_parent P = new elmList_parent;
+    info_parent(P) = x;
     prev_parent(P) = NULL;
     next_parent(P) = NULL;
 }
@@ -15,11 +15,37 @@ void deallocate_parent(address_parent &P){
     delete P;
 }
 
-void insertFirst_parent(List_parent &LP, address_parent P){  
+address_parent input_parent(List_parent LP){
+    parent x;
+    address_parent P = first_parent(LP);
+    if(first_parent(LP) == NULL){
+        x.ID = 1;
+    } else {
+        x.ID = info_parent(prev_parent(P)).ID + 1;
+    }
+    cin.get();
+    cout<<"Nama \t\t\t: ";
+    getline(cin, x.nama);
+    cout<<"Asal SMA \t\t: ";
+    getline(cin, x.sma);
+    cout<<"Jurusan SMA \t\t: ";
+    getline(cin, x.jurusan_sma);
+    cout<<"Jenis Kelamin (L/P)\t: ";
+    cin>>x.jenis_kelamin;
+    cout<<"Jalur Masuk \t\t: ";
+    cin>>x.jalur_masuk;
+    cout<<"Sumbangan \t\t: ";
+    cin>>x.sumbangan;
+    cout<<endl;
+
+    return newElement_parent(x);
+}
+
+void insertFirst_parent(List_parent &LP, address_parent P){
     if(first_parent(LP) == NULL){
         first_parent(LP) = P;
-        next_parent(LP) = P;
-        prev_parent(LP) = P;
+        next_parent(P) = P;
+        prev_parent(P) = P;
     } else {
         next_parent(P) = first_parent(LP);
         prev_parent(P) = prev_parent(first_parent(LP));
@@ -36,7 +62,7 @@ void insertAfter_parent(List_parent &LP, address_parent Prec, address_parent P){
     prev_parent(P) = Prec;
 }
 
-void insertLast_parent(List_parent &LP, address P){
+void insertLast_parent(List_parent &LP, address_parent P){
     if(first_parent(LP) == NULL){
         insertFirst_parent(LP, P);
     } else {
@@ -48,12 +74,13 @@ void insertLast_parent(List_parent &LP, address P){
 }
 
 void deleteFirst_parent(List_parent &LP, address_parent &P){
-    P = first_parent(LP);
-    if(next_parent(P) == first_parent(LP)) {
+    if(next_parent(first_parent(LP)) == first_parent(LP)) {
+        P = first_parent(LP);
         next_parent(P) = NULL;
         prev_parent(P) = NULL;
         first_parent(LP) = NULL;
     } else {
+        P = first_parent(LP);
         first_parent(LP) = next_parent(P);
         prev_parent(first_parent(LP)) = prev_parent(P);
         next_parent(prev_parent(P)) = first_parent(LP);
@@ -92,6 +119,7 @@ void printList_parent(List_parent LP){
         cout<<"============================================================================================================================================"<<endl;
         cout<<endl;
         cout<<"\t\t\t\t\t\t\t Belum ada Mahasiswa yang terdaftar \n"<<endl;
+        cout<<"============================================================================================================================================"<<endl;
     } else {
         cout<<"============================================================================================================================================"<<endl;
         cout<<"\t\t\t\t\t\t\t\t Daftar Mahasiswa Baru"<<endl;
@@ -105,46 +133,65 @@ void printList_parent(List_parent LP){
             cout<<info_parent(P).jenis_kelamin<<"\t\t\t| "<<info_parent(P).jalur_masuk<<"\t\t| Rp"<<info_parent(P).sumbangan;
             cout<<endl;
             P = next_parent(P);
-        }while(next_parent(P) != first_parent(P));
+        }while(next_parent(P) != first_parent(LP));
+        cout<<"============================================================================================================================================"<<endl;
     }
 }
 
-address searchbyID_parent(List_parent LP, int id_search){
+address_parent searchbyID_parent(List_parent LP, int id_search){
     address_parent P;
-    bool found;
+    address_parent found = NULL;
     if(first_parent(LP) != NULL){
-        found = false;
         P = first_parent(LP);
         do{
             if(info_parent(P).ID == id_search){
-                found = true;
-            } else {
-                P = next_parent(P);
+                found = P;
             }
-        }while(found != true &&next_parent(P) != first_parent(LP));
+            P = next_parent(P);
+        }while(P != first_parent(LP));
     }
-    if(found != true){
-        P = NULL;
-    }
-    return P;
+    return found;
 }
 
 address_parent searchbyName(List_parent LP, string nama_search){
-    bool found;
     address_parent P;
+    address_parent found = NULL;
     if(first_parent(LP) != NULL){
-        found = false;
         P = first_parent(LP);
         do{
             if(info_parent(P).nama == nama_search){
-                found = true;
-            } else {
-                P = next_parent(P);
+                found = P;
             }
-        }while(found != true && next_parent(P) != first_parent(LP));
+            P = next_parent(P);
+        }while(P != first_parent(LP));
     }
-    if(found != true){
-        P = NULL;
+    return found;
+}
+
+void editData_parent(List_parent LP, address_parent &P){
+    cin.get();
+    cout<<"Nama \t\t\t: ";
+    getline(cin,info_parent(P).nama);
+    cout<<"Asal SMA \t\t: ";
+    getline(cin,info_parent(P).sma);
+    cout<<"Jurusan SMA \t\t: ";
+    getline(cin,info_parent(P).jurusan_sma);
+    cout<<"Jenis Kelamin (L/P)\t: ";
+    getline(cin,info_parent(P).jenis_kelamin);
+    cout<<"Jalur Masuk \t\t: ";
+    getline(cin,info_parent(P).jalur_masuk);
+    cout<<"Sumbangan \t\t: ";
+    cin>>info_parent(P).sumbangan;
+}
+
+void deleteSearch_parent(List_parent &LP, address_parent &P){
+    address_parent Prec;
+    if(P != NULL){
+        if(P == first_parent(LP)){
+            deleteFirst_parent(LP, P);
+        } else if(next_parent(P) != first_parent(LP) && prev_parent(P) != first_parent(LP)){
+            Prec = prev_parent(P);
+            deleteAfter_parent(LP, Prec, P);
+        }
     }
-    return P;
 }

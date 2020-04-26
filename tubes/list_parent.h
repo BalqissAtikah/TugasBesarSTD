@@ -1,16 +1,16 @@
 #ifndef LIST_PARENT_H_INCLUDED
 #define LIST_PARENT_H_INCLUDED
+
 #define info_parent(P) P->info_parent
 #define next_parent(P) P->next_parent
 #define prev_parent(P) P->prev_parent
 #define first_parent(L) L.first_parent
-#define ke_parent(P) P->parent
+#define ke_parent(P) P->ke_parent
 
 #include <iostream>
 #include <stdlib.h>
 #include <conio.h>
 #include <string>
-
 
 using namespace std;
 
@@ -35,7 +35,7 @@ struct List_parent{
 void createList_parent(List_parent &LP);
 address_parent newElement_parent(parent x);
 void deallocate_parent(address_parent &P);
-address_parent input_parent();
+address_parent input_parent(List_parent LP);
 void insertFirst_parent(List_parent &LP, address_parent P);
 void insertAfter_parent(List_parent &LP, address_parent Prec, address_parent P);
 void insertLast_parent(List_parent &LP, address_parent P);
