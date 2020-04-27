@@ -7,6 +7,7 @@
 #include <conio.h>
 #include <string>
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -36,6 +37,8 @@ void insertLast_MLL(List_MLL &LM, address_MLL PM);
 void deleteFirst_MLL(List_MLL &LM, address_MLL &PM);
 void deleteAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL &PM);
 void deleteLast_MLL(List_MLL &LM, address_MLL &PM);
+void generateID(address_child PC, address_parent &PP);
+void random();
 void printList_MLL(List_MLL LM);
 address_MLL search_MLL(List_MLL LM, string x, string y);
 void input_MLL(List_parent LP, List_child LC, List_MLL &LM);

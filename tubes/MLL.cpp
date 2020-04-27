@@ -101,6 +101,86 @@ void deleteLast_MLL(List_MLL &LM, address_MLL &PM){
     }
 }
 
+void generateID(address_child PC, address_parent &PP){
+    if(info_child(PC).jurusan_pilihan=="S1 Teknik Telekomunikasi"){
+        info_parent(PP).ID=1101*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Teknik Elektro"){
+        info_parent(PP).ID=1102*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Teknik Komputer"){
+        info_parent(PP).ID=1103*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Teknik Fisika"){
+        info_parent(PP).ID=1104*1000000;
+    } else if(info_child(PC).jurusan_pilihan=="S1 Teknik Industri"){
+        info_parent(PP).ID=1201*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Sistem Informasi"){
+        info_parent(PP).ID=1202*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Teknik Logistik"){
+        info_parent(PP).ID=1203*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Informatika"){
+        info_parent(PP).ID=1301*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Teknologi Informasi"){
+        info_parent(PP).ID=1302*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Rekayasa Perangkat Lunak"){
+        info_parent(PP).ID=1303*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 MBTI"){
+        info_parent(PP).ID=1401*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Akuntansi"){
+        info_parent(PP).ID=1402*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Administrasi Bisnis"){
+        info_parent(PP).ID=1501*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Ilmu Komunikasi"){
+        info_parent(PP).ID=1502*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Digital Punlic Relation"){
+        info_parent(PP).ID=1503*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Desain Komunikasi Visual"){
+        info_parent(PP).ID=1601*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Desain Produk"){
+        info_parent(PP).ID=1602*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Desain Interior"){
+        info_parent(PP).ID=1601*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Seni Rupa"){
+        info_parent(PP).ID=1604*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="S1 Kriya Tekstil dan Mode"){
+        info_parent(PP).ID=1605*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="D3 Sistem Informasi"){
+        info_parent(PP).ID=6701*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="D3 Teknik Komputer"){
+        info_parent(PP).ID=6702*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="D3 Sistem Informasi Akuntansi"){
+        info_parent(PP).ID=6703*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="D3 Manajemen Pemasaran"){
+        info_parent(PP).ID=6704*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="D3 Teknologi Telekomunikasi"){
+        info_parent(PP).ID=6705*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="D3 Teknik Informatika"){
+        info_parent(PP).ID=6706*1000000;
+    }else if(info_child(PC).jurusan_pilihan=="D3 Perhotelan"){
+        info_parent(PP).ID=6707*1000000;
+    }else{
+        cout<<"Wrong Input";
+    }
+    int n = info_child(PC).tahun_masuk;
+    if(n/1000>=1){
+        int sisa=0;
+        sisa=n%1000;
+        if(sisa>0){
+            info_parent(PP).ID=info_parent(PP).ID + (sisa*10000);
+        }else if(sisa=0){
+            info_parent(PP).ID=info_parent(PP).ID + (sisa*10000);
+        }
+   }
+   int x = random();
+   info_parent(PP).ID=info_parent(PP).ID + x;
+}
+
+void random(){
+    int x;
+    int max=9999;
+    srand(time(NULL));
+    x=rand()%max;
+}
+
+
 void printList_MLL(List_MLL LM){
     address_MLL PM;
     if(first_MLL(LM) == NULL){
