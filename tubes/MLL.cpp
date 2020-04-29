@@ -197,11 +197,11 @@ void printList_MLL(List_MLL LM){
         cout<<"========================================================================="<<endl;
         cout<<"\t\t Daftar Jurusan Yang Dipilih Mahasiswa Baru"<<endl;
         cout<<"========================================================================="<<endl;
-        cout<<"ID \t\t| Nama \t\t\t| Asal SMA \t\t| Jurusan \t\t|"<<endl;
+        cout<<"ID \t| Nama \t\t\t| Asal SMA \t\t| Jurusan \t|"<<endl;
         cout<<"========================================================================="<<endl;
         PM = first_MLL(LM);
         do{
-            cout<<info_parent(ke_parent(PM)).ID<<" \t| "<<info_parent(ke_parent(PM)).nama<<" \t| "<<info_parent(ke_parent(PM)).sma<<" \t| "<<info_child(ke_child(PM)).jurusan_pilihan<<"\t|";
+            cout<<info_parent(ke_parent(PM)).ID<<" \t| "<<info_parent(ke_parent(PM)).nama<<" \t| "<<info_parent(ke_parent(PM)).sma<<" \t| "<<info_child(ke_child(PM)).jurusan_pilihan<<"|";
             cout<<endl;
             PM = next_MLL(PM);
         } while(PM != first_MLL(LM));
@@ -315,6 +315,7 @@ void delete_child(List_MLL &LM, List_child &LC, address_child &PC){
 void delete_MLL(List_MLL &LM, address_MLL &PM){
     address_MLL Q, Prec;
     if(PM != NULL){
+        info_child(ke_child(PM)).pendaftar--;
         Q = first_MLL(LM);
         do{
             Q = next_MLL(Q);
