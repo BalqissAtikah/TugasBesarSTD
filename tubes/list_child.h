@@ -10,12 +10,13 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
 struct child{
     int ID;
-    int tahun_masuk;
+    int pendaftar;
     string jurusan_pilihan, fakultas;
     char akreditasi;
 };
@@ -35,7 +36,7 @@ struct List_child{
 void create_List_child(List_child &LC);
 address_child newElement_child(child x);
 void deallocate_child(address_child &P);
-address_child input_child();
+address_child input_child();//Wahyu Hauzan Rafi(1301191313)
 void insertFirst_child(List_child &LC, address_child P);
 void insertAfter_child(List_child &LC, address_child Prec, address_child P);
 void insertLast_child(List_child &LC, address_child P);
@@ -43,9 +44,13 @@ void deleteFirst_child(List_child &LC, address_child &P);
 void deleteAfter_child(List_child &LC, address_child Prec, address_child &P);
 void deleteLast_child(List_child &LC, address_child &P);
 void printList_child(List_child LC);
+void printText_child(List_child LC);//Wahyu Hauzan Rafi(1301191313)
 address_child searchbyID_child(List_child LC, int x);
 address_child searchbyMajor(List_child LC, string x);
-void editData_child(List_child LC, address_child &P);
+void editData_child(List_child LC, address_child &P);//Wahyu Hauzan Rafi(1301191313)
 void deleteSearch_child(List_child &LC, address_child &P);
+void data_child(List_child &LC);//Wahyu Hauzan Rafi(1301191313)
+int random_child();//Wahyu Hauzan Rafi(1301191313)
+int totalPendaftar_child(List_child  LC);//Wahyu Hauzan Rafi(1301191313)
 
 #endif // LIST_CHILD_H_INCLUDED

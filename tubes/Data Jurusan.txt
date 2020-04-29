@@ -1,0 +1,32 @@
+====================================================================================
+		Daftar Jurusan Telkom University
+====================================================================================
+ID 	| Fakultas 	| Jurusan			|   Akreditasi	| Pendaftar|
+====================================================================================
+1101	| FTE		| S1 Tek Telekomunikasi		|	[A]	| 0
+1102	| FTE		| S1 Teknik Elektro		|	[A]	| 0
+1103	| FTE		| S1 Teknik Komputer		|	[B]	| 0
+1104	| FTE		| S1 Teknik Fisika		|	[A]	| 0
+1201	| FRI		| S1 Teknik Industri		|	[A]	| 0
+1202	| FRI		| S1 Sistem Informasi		|	[A]	| 0
+1203	| FRI		| S1 Teknik Logistik		|	[C]	| 0
+1301	| FIF		| S1 Informatika		|	[A]	| 0
+1302	| FIF		| S1 Tekno Informasi		|	[B]	| 0
+1303	| FIF		| S1 RPL Reguler		|	[B]	| 0
+1401	| FEB		| S1 MBTI Reguler		|	[A]	| 0
+1402	| FEB		| S1 Akuntansi Reguler		|	[A]	| 0
+1501	| FKB		| S1 Admin Bisnis		|	[A]	| 0
+1502	| FKB		| S1 Ilmu Komunikasi		|	[A]	| 0
+1503	| FKB		| S1 DPR Reguler		|	[B]	| 0
+1601	| FIK		| S1 DKV Reguler		|	[A]	| 1
+1602	| FIK		| S1 Desain Produk		|	[A]	| 0
+1603	| FIK		| S1 Desain Interior		|	[A]	| 0
+1604	| FIK		| S1 Seni Rupa Reguler		|	[A]	| 0
+1605	| FIK		| S1 Kriya Reguler		|	[A]	| 0
+6701	| FIT		| D3 Sistem Informasi		|	[A]	| 0
+6702	| FIT		| D3 Teknik Komputer		|	[A]	| 0
+6703	| FIT		| D3 SisFo Akuntansi		|	[A]	| 0
+6704	| FIT		| D3 Digital Marketing		|	[B]	| 0
+6705	| FIT		| D3 Tekno Telekom		|	[A]	| 0
+6706	| FIT		| D3 Teknik Informatika		|	[A]	| 0
+6707	| FIT		| D3 Perhotelan Reguler		|	[A]	| 0

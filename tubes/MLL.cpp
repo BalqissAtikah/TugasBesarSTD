@@ -1,4 +1,5 @@
 #include "MLL.h"
+//MLL Semua Yang Membuat Wahyu Hauzan Rafi(1301191313). Kecuali generateID yang membuat dasarnya Balqis Sayyidahtul Atikah(1301193480)
 
 void createList_MLL(List_MLL &LM){
     first_MLL(LM) = NULL;
@@ -101,8 +102,8 @@ void deleteLast_MLL(List_MLL &LM, address_MLL &PM){
     }
 }
 
-void generateID(address_child PC, address_parent &PP){
-    if(info_child(PC).jurusan_pilihan=="S1 Teknik Telekomunikasi"){
+int generateID(address_child PC, address_parent &PP){
+   /* if(info_child(PC).jurusan_pilihan=="S1 Teknik Telekomunikasi"){
         info_parent(PP).ID=1101*1000000;
     }else if(info_child(PC).jurusan_pilihan=="S1 Teknik Elektro"){
         info_parent(PP).ID=1102*1000000;
@@ -165,19 +166,21 @@ void generateID(address_child PC, address_parent &PP){
         sisa=n%1000;
         if(sisa>0){
             info_parent(PP).ID=info_parent(PP).ID + (sisa*10000);
-        }else if(sisa=0){
+        }else if(sisa==0){
             info_parent(PP).ID=info_parent(PP).ID + (sisa*10000);
         }
    }
    int x = random();
    info_parent(PP).ID=info_parent(PP).ID + x;
+   */
+   int bebas = random();
+   return (info_child(PC).ID * 1000000) + ((info_parent(PP).tahun_masuk % 1000) * 10000) + bebas;
 }
 
-void random(){
-    int x;
-    int max=9999;
+int random(){
     srand(time(NULL));
-    x=rand()%max;
+    int randomize = 1 + (rand() % 9999);
+    return randomize;
 }
 
 
@@ -204,6 +207,25 @@ void printList_MLL(List_MLL LM){
         } while(PM != first_MLL(LM));
         cout<<"========================================================================="<<endl;
     }
+}
+
+void printText(List_MLL LM){
+    ofstream myfile;
+    myfile.open("Data PMB.txt");
+    myfile<<"=========================================================================================\n";
+    myfile<<"\t\t Daftar Jurusan Yang Dipilih Mahasiswa Baru\n";
+    myfile<<"=========================================================================================\n";
+    myfile<<"ID \t\t| Nama \t\t\t| Asal SMA \t\t| Jurusan \t\t|\n";
+    address_MLL PM = first_MLL(LM);
+    int ID;
+    if(PM != NULL){
+        do{
+            ID = generateID(ke_child(PM), ke_parent(PM));
+            myfile<<ID<<" \t| "<<info_parent(ke_parent(PM)).nama<<" \t| "<<info_parent(ke_parent(PM)).sma<<" \t| "<<info_child(ke_child(PM)).jurusan_pilihan<<"\t|\n";
+            PM = next_MLL(PM);
+        }while(PM != first_MLL(LM));
+    }
+    myfile.close();
 }
 
 address_MLL search_MLL(List_MLL LM, string x, string y){
@@ -235,6 +257,8 @@ void input_MLL(List_parent LP, List_child LC, List_MLL &LM){
     parent parentcari;
     child childcari;
     printList_parent(LP);
+    ofstream myfile;
+    cout<<endl;
     cout<<"Nama Mahasiswa Baru: ";
     cin.get();
     getline(cin, parentcari.nama);
@@ -242,12 +266,13 @@ void input_MLL(List_parent LP, List_child LC, List_MLL &LM){
     if(PP != NULL){
         system("cls");
         printList_child(LC);
+        cout<<endl;
         cout<<"Nama Mahasiswa Baru: "<<parentcari.nama<<endl;
         cout<<"Jurusan Yang Ingin Dipilih: ";
         getline(cin, childcari.jurusan_pilihan);
         PC = searchbyMajor(LC, childcari.jurusan_pilihan);
         if(PC != NULL){
-            //generate ID baru buat parent
+            info_child(PC).pendaftar = info_child(PC).pendaftar + 1;
             PM = newElement_MLL(PP, PC);
             insertLast_MLL(LM, PM);
             cout<<endl;
@@ -257,7 +282,7 @@ void input_MLL(List_parent LP, List_child LC, List_MLL &LM){
             cout<<"Jurusan Tersebut Belum Tersedia Di Kampus Kami"<<endl;
         }
     } else {
-        cout<<"Data Mahasiswa Baru Tidak Tersedia Dalam Pilihan"<<endl;
+        cout<<"Anda Belum Mendaftar Di Kampus Kami"<<endl;
     }
 }
 
@@ -344,12 +369,14 @@ void search_child(List_MLL LM, List_child LC, address_child PC){
 }
 
 void menu(List_parent LP, List_child LC, List_MLL LM){
-    int pil;
+    int pil, sum;
     parent parentcari;
     child childcari;
     address_parent PP;
     address_child PC;
     address_MLL PM;
+    data_child(LC);
+    data_parent(LP);
 
     do{
         system("cls");
@@ -378,6 +405,16 @@ void menu(List_parent LP, List_child LC, List_MLL LM){
         cout<<" -- SEARCHING -- "<<endl;
         cout<<"12. Cari Data Mahasiswa Baru"<<endl;
         cout<<"13. Cari Data Jurusan"<<endl;
+        cout<<endl;
+        cout<<" -- PRINT DATA -- "<<endl;
+        cout<<"14. Print Data Mahasiswa Yang Terdaftar ke TXT"<<endl;
+        cout<<"15. Print Data Jurusan ke TXT"<<endl;
+        cout<<"16. Print Data Yang Telah Memilih Jurusan Ke TXT"<<endl;
+        cout<<endl;
+        cout<<endl;
+        cout<<"17. Total Pendafar"<<endl;
+        cout<<"18. Total Pemilih Jurusan"<<endl;
+        cout<<endl;
         cout<<endl;
         cout<<"0. Exit"<<endl;
         cout<<endl;
@@ -410,19 +447,14 @@ void menu(List_parent LP, List_child LC, List_MLL LM){
             break;
         case 3:
             system("cls");
-            cout<<"============================================================================="<<endl;
-            cout<<"\t\t\t Pilih Jurusan Anda"<<endl;
-            cout<<"============================================================================="<<endl;
             input_MLL(LP, LC, LM);
             cout<<endl;
             system("pause");
             break;
         case 4:
             system("cls");
-            cout<<"============================================================================="<<endl;
-            cout<<"\t\t\t Edit Data Diri"<<endl;
-            cout<<"============================================================================="<<endl;
             printList_parent(LP);
+            cout<<endl;
             cout<<"Nama Mahasiswa Baru Yang Ingin Diubah: ";
             cin.get();
             getline(cin, parentcari.nama);
@@ -432,28 +464,31 @@ void menu(List_parent LP, List_child LC, List_MLL LM){
                 system("pause");
                 system("cls");
                 editData_parent(LP, PP);
+                cout<<endl;
                 cout<<"Data Berhasil Diubah"<<endl;
             } else {
+                cout<<endl;
                 cout<<"Mahasiswa Baru Tidak Ditemukan"<<endl;
             }
             system("pause");
             break;
         case 5:
             system("cls");
-            cout<<"============================================================================="<<endl;
-            cout<<"\t\t\t Edit Jurusan Yang Telah Dipilih"<<endl;
-            cout<<"============================================================================="<<endl;
             printList_child(LC);
+            cout<<endl;
             cout<<"Jurusan Yang Ingin Diubah: ";
             cin.get();
             getline(cin, childcari.jurusan_pilihan);
             PC = searchbyMajor(LC, childcari.jurusan_pilihan);
             if(PC != NULL){
+                cout<<endl;
                 cout<<"Jurusan Ditemukan"<<endl;
                 system("cls");
                 editData_child(LC, PC);
+                cout<<endl;
                 cout<<"Jurusan Berhasil Diubah"<<endl;
             } else {
+                cout<<endl;
                 cout<<"Jurusan Tersebut Tidak Ada"<<endl;
             }
             system("pause");
@@ -476,91 +511,148 @@ void menu(List_parent LP, List_child LC, List_MLL LM){
         case 9:
             system("cls");
             printList_parent(LP);
-            cout<<"Masukkan Nama Mahasiswa Baru Yang Ingin Dihapus: ";
-            cin.get();
-            getline(cin,parentcari.nama);
-            PP = searchbyName(LP, parentcari.nama);
-            if(PP != NULL){
-                delete_parent(LM, LP, PP);
-                cout<<endl;
-                cout<<"Data Mahasiswa Baru Berhasil Dihapus"<<endl;
-                cout<<"Semoga Bertemu Lagi Di PMB TELKOM UNIVERSITY Tahun Depan!"<<endl;
-                cout<<endl;
+            cout<<endl;
+            if(first_parent(LP) != NULL){
+                cout<<"Masukkan Nama Mahasiswa Baru Yang Ingin Dihapus: ";
+                cin.get();
+                getline(cin,parentcari.nama);
+                PP = searchbyName(LP, parentcari.nama);
+                if(PP != NULL){
+                    delete_parent(LM, LP, PP);
+                    cout<<endl;
+                    cout<<"Data Mahasiswa Baru Berhasil Dihapus"<<endl;
+                    cout<<"Semoga Bertemu Lagi Di PMB TELKOM UNIVERSITY Tahun Depan!"<<endl;
+                    cout<<endl;
+                } else {
+                    cout<<endl;
+                    cout<<"Data Mahasiswa Baru Tidak Ditemukan"<<endl;
+                    cout<<endl;
+                }
             } else {
-                cout<<endl;
-                cout<<"Data Mahasiswa Baru Tidak Ditemukan"<<endl;
-                cout<<endl;
+                cout<<"Belum Ada Mahasiswa Yang Mendaftar"<<endl;
             }
             system("pause");
             break;
         case 10:
             system("cls");
             printList_child(LC);
-            cout<<"Masukkan Jurusan Yang Ingin Dihapus: ";
-            cin.get();
-            getline(cin, childcari.jurusan_pilihan);
-            PC = searchbyMajor(LC, childcari.jurusan_pilihan);
-            if(PC != NULL){
-                delete_child(LM, LC, PC);
-                cout<<endl;
-                cout<<"Jurusan Berhasil Dihapus"<<endl;
-                cout<<endl;
+            cout<<endl;
+            if(first_child(LC) != NULL){
+                cout<<"Masukkan Jurusan Yang Ingin Dihapus: ";
+                cin.get();
+                getline(cin, childcari.jurusan_pilihan);
+                PC = searchbyMajor(LC, childcari.jurusan_pilihan);
+                if(PC != NULL){
+                    delete_child(LM, LC, PC);
+                    cout<<endl;
+                    cout<<"Jurusan Berhasil Dihapus"<<endl;
+                    cout<<endl;
+                } else {
+                    cout<<endl;
+                    cout<<"Jurusan Tidak Ditemukan"<<endl;
+                    cout<<endl;
+                }
             } else {
-                cout<<endl;
-                cout<<"Jurusan Tidak Ditemukan"<<endl;
-                cout<<endl;
+                cout<<"Kampus Kami Belum Memiliki Jurusan Yang Tersedia Untuk Anda"<<endl;
             }
             system("pause");
             break;
         case 11:
             system("cls");
             printList_MLL(LM);
-            cout<<"Masukkan Nama Mahasiswa Baru Yang Ingin Dihapus: ";
-            cin.get();
-            getline(cin, parentcari.nama);
-            cout<<"Masukkan Jurusan Yang Ingin Dihapus: ";
-            getline(cin, childcari.jurusan_pilihan);
-            PM = search_MLL(LM, parentcari.nama, childcari.jurusan_pilihan);
-            if(PM != NULL){
-                delete_MLL(LM, PM);
-                cout<<"Data Berhasil Dihapus"<<endl;
+            cout<<endl;
+            if(first_MLL(LM) != NULL){
+                cout<<"Masukkan Nama Mahasiswa Baru Yang Ingin Dihapus: ";
+                cin.get();
+                getline(cin, parentcari.nama);
+                cout<<"Masukkan Jurusan Yang Ingin Dihapus: ";
+                getline(cin, childcari.jurusan_pilihan);
+                PM = search_MLL(LM, parentcari.nama, childcari.jurusan_pilihan);
+                if(PM != NULL){
+                    delete_MLL(LM, PM);
+                    cout<<"Data Berhasil Dihapus"<<endl;
+                } else {
+                    cout<<"Data Tidak Ditemukan"<<endl;
+                }
             } else {
-                cout<<"Data Tidak Ditemukan"<<endl;
+                cout<<"Belum Ada Mahasiswa Baru Yang Memilih Jurusan"<<endl;
             }
             system("pause");
             break;
         case 12:
             system("cls");
             printList_parent(LP);
-            cout<<"Masukkan Nama Mahasiswa Baru Yang Ingin Dicari: ";
-            cin.get();
-            getline(cin, parentcari.nama);
-            PP = searchbyName(LP, parentcari.nama);
-            if(PP != NULL){
-                cout<<endl;
-                cout<<parentcari.nama<<endl;
-                search_parent(LM, LP, PP);
-                cout<<endl;
+            cout<<endl;
+            if(first_parent(LP) != NULL){
+                cout<<"Masukkan Nama Mahasiswa Baru Yang Ingin Dicari: ";
+                cin.get();
+                getline(cin, parentcari.nama);
+                PP = searchbyName(LP, parentcari.nama);
+                if(PP != NULL){
+                    cout<<endl;
+                    cout<<parentcari.nama<<endl;
+                    search_parent(LM, LP, PP);
+                    cout<<endl;
+                } else {
+                    cout<<"Mahasiswa Baru Tidak Ditemukan\n"<<endl;
+                }
             } else {
-                cout<<"Mahasiswa Baru Tidak Ditemukan\n"<<endl;
+                cout<<"Belum Ada Mahasiswa Yang Mendaftar"<<endl;
             }
             system("pause");
             break;
         case 13:
             system("cls");
             printList_child(LC);
-            cout<<"Masukkan Jurusan Yang Dicari: ";
-            cin.get();
-            getline(cin, childcari.jurusan_pilihan);
-            PC = searchbyMajor(LC, childcari.jurusan_pilihan);
-            if(PC != NULL){
-                cout<<endl;
-                cout<<"Mahasiswa Yang Memilih Jurusan "<<childcari.jurusan_pilihan<<": "<<endl;
-                search_child(LM, LC, PC);
-                cout<<endl;
+            cout<<endl;
+            if(first_child(LC) != NULL){
+                cout<<"Masukkan Jurusan Yang Dicari: ";
+                cin.get();
+                getline(cin, childcari.jurusan_pilihan);
+                PC = searchbyMajor(LC, childcari.jurusan_pilihan);
+                if(PC != NULL){
+                    cout<<endl;
+                    cout<<"Mahasiswa Yang Memilih Jurusan "<<childcari.jurusan_pilihan<<": "<<endl;
+                    search_child(LM, LC, PC);
+                    cout<<endl;
+                } else {
+                    cout<<"\nJurusan Tidak Ditemukan\n"<<endl;
+                }
             } else {
-                cout<<"\nJurusan Tidak Ditemukan\n"<<endl;
+                cout<<"Kampus Kami Belum Memiliki Jurusan Yang Tersedia Untuk Anda"<<endl;
             }
+            system("pause");
+            break;
+        case 14:
+            system("cls");
+            printText_parent(LP);
+            cout<<"Data Sudah Dicetak"<<endl;
+            system("pause");
+            break;
+        case 15:
+            system("cls");
+            printText_child(LC);
+            cout<<"Data Sudah Dicetak"<<endl;
+            system("pause");
+            break;
+        case 16:
+            system("cls");
+            printText(LM);
+            cout<<"Data Sudah Dicetak"<<endl;
+            system("pause");
+            break;
+        case 17:
+            system("cls");
+            sum = totalPendaftar_parent(LP);
+            cout<<"Total Pendaftar Di Telkom University: "<<sum<<endl;
+            cout<<endl;
+            system("pause");
+            break;
+        case 18:
+            system("cls");
+            sum = totalPendaftar_child(LC);
+            cout<<"Total Mahasiswa Yang Telah Memilih Jurusan: "<<sum<<endl;
+            cout<<endl;
             system("pause");
             break;
         case 0:

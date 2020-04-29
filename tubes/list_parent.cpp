@@ -9,13 +9,14 @@ address_parent newElement_parent(parent x){
     info_parent(P) = x;
     prev_parent(P) = NULL;
     next_parent(P) = NULL;
+    return P;
 }
 
 void deallocate_parent(address_parent &P){
     delete P;
 }
 
-address_parent input_parent(List_parent LP){
+address_parent input_parent(List_parent LP){//Wahyu Hauzan Rafi(1301191313)
     parent x;
     address_parent P = first_parent(LP);
     if(first_parent(LP) == NULL){
@@ -31,9 +32,11 @@ address_parent input_parent(List_parent LP){
     cout<<"Jurusan SMA \t\t: ";
     getline(cin, x.jurusan_sma);
     cout<<"Jenis Kelamin (L/P)\t: ";
-    cin>>x.jenis_kelamin;
+    getline(cin, x.jenis_kelamin);
     cout<<"Jalur Masuk \t\t: ";
-    cin>>x.jalur_masuk;
+    getline(cin, x.jalur_masuk);
+    cout<<"Tahun Masuk \t\t: ";
+    cin>>x.tahun_masuk;
     cout<<"Sumbangan \t\t: ";
     cin>>x.sumbangan;
     cout<<endl;
@@ -124,18 +127,34 @@ void printList_parent(List_parent LP){
         cout<<"============================================================================================================================================"<<endl;
         cout<<"\t\t\t\t\t\t\t\t Daftar Mahasiswa Baru"<<endl;
         cout<<"============================================================================================================================================"<<endl;
-        cout<<"ID \t| Nama \t\t\t| Asal SMA \t\t| Jurusan SMA \t| Jenis Kelamin \t| Jalur Masuk \t| Sumbangan"<<endl;
+        cout<<"ID \t| Nama \t\t\t| Asal SMA \t\t| Jurusan SMA \t| Jenis Kelamin \t| Jalur Masuk \t| Tahun Masuk \t| Sumbangan"<<endl;
         cout<<"============================================================================================================================================"<<endl;
         P = first_parent(LP);
         do{
             cout<<info_parent(P).ID<<"\t| "<<info_parent(P).nama<<"\t| ";
             cout<<info_parent(P).sma<<"\t| "<<info_parent(P).jurusan_sma<<"\t\t| ";
-            cout<<info_parent(P).jenis_kelamin<<"\t\t\t| "<<info_parent(P).jalur_masuk<<"\t\t| Rp"<<info_parent(P).sumbangan;
+            cout<<info_parent(P).jenis_kelamin<<"\t\t\t| "<<info_parent(P).jalur_masuk<<"\t\t| "<<info_parent(P).tahun_masuk<<"\t\t| Rp"<<info_parent(P).sumbangan;
             cout<<endl;
             P = next_parent(P);
-        }while(next_parent(P) != first_parent(LP));
+        }while(P != first_parent(LP));
         cout<<"============================================================================================================================================"<<endl;
     }
+}
+
+void printText_parent(List_parent LP){//Wahyu Hauzan Rafi(1301191313)
+    ofstream myfile;
+    myfile.open("Data Mahasiswa Baru.txt");
+    myfile<<"============================================================================================================================================\n";
+    myfile<<"\t\t\t\t\t\t\t\t Daftar Mahasiswa Baru\n";
+    myfile<<"============================================================================================================================================\n";
+    myfile<<"ID \t| Nama \t\t\t| Asal SMA \t\t| Jurusan SMA \t| Jenis Kelamin \t| Jalur Masuk \t| Tahun Masuk \t| Sumbangan\n";
+    myfile<<"============================================================================================================================================\n";
+    address_parent P = first_parent(LP);
+    do{
+        myfile<<info_parent(P).ID<<"\t| "<<info_parent(P).nama<<"\t| "<<info_parent(P).sma<<"\t| "<<info_parent(P).jurusan_sma<<"\t\t| "<<info_parent(P).jenis_kelamin<<"\t\t\t| "<<info_parent(P).jalur_masuk<<"\t\t| "<<info_parent(P).tahun_masuk<<"\t\t| Rp"<<info_parent(P).sumbangan<<"\n";
+        P = next_parent(P);
+    }while(P != first_parent(LP));
+    myfile.close();
 }
 
 address_parent searchbyID_parent(List_parent LP, int id_search){
@@ -168,7 +187,7 @@ address_parent searchbyName(List_parent LP, string nama_search){
     return found;
 }
 
-void editData_parent(List_parent LP, address_parent &P){
+void editData_parent(List_parent LP, address_parent &P){//Wahyu Hauzan Rafi(1301191313)
     cin.get();
     cout<<"Nama \t\t\t: ";
     getline(cin,info_parent(P).nama);
@@ -194,4 +213,55 @@ void deleteSearch_parent(List_parent &LP, address_parent &P){
             deleteAfter_parent(LP, Prec, P);
         }
     }
+    deallocate_parent(P);
+}
+
+void data_parent(List_parent &LP){//Wahyu Hauzan Rafi(1301191313)
+    parent x;
+    address_parent PP;
+
+    x.ID = 1;
+    x.nama = "Wahyu Hauzan Rafi";
+    x.sma = "SMAN 1 Pemalang";
+    x.jurusan_sma = "MIPA";
+    x.jenis_kelamin = "L";
+    x.jalur_masuk = "OSC";
+    x.sumbangan = 1000000;
+    x.tahun_masuk = 2020;
+    PP = newElement_parent(x);
+    insertLast_parent(LP, PP);
+
+    x.ID = 2;
+    x.nama = "Balqis Sayyidahtul A";
+    x.sma = "SMAN 1 Makassar";
+    x.jurusan_sma = "MIPA";
+    x.jenis_kelamin = "P";
+    x.jalur_masuk = "USM";
+    x.sumbangan = 2000000;
+    x.tahun_masuk = 2020;
+    PP = newElement_parent(x);
+    insertLast_parent(LP, PP);
+
+    x.ID = 3;
+    x.nama = "Bagja 9102 Kurniawan";
+    x.sma = "SMAN 1 Tangerang";
+    x.jurusan_sma = "MIPA";
+    x.jenis_kelamin = "L";
+    x.jalur_masuk = "JPA";
+    x.sumbangan = 3000000;
+    x.tahun_masuk = 2020;
+    PP = newElement_parent(x);
+    insertLast_parent(LP, PP);
+}
+
+int totalPendaftar_parent(List_parent LP){//Wahyu Hauzan Rafi(1301191313)
+    address_parent PP = first_parent(LP);
+    int sum = 0;
+    if(first_parent(LP) != NULL){
+        do{
+            sum ++;
+            PP = next_parent(PP);
+        }while(PP != first_parent(LP));
+    }
+    return sum;
 }

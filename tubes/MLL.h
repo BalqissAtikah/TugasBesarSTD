@@ -7,7 +7,8 @@
 #include <conio.h>
 #include <string>
 #include <iostream>
-#include <time.h>
+#include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -27,7 +28,7 @@ struct elmList_MLL{
 struct List_MLL{
     address_MLL first_MLL;
 };
-
+//MLL Semua Yang Membuat Wahyu Hauzan Rafi(1301191313). Kecuali generateID yang membuat dasarnya Balqis Sayyidahtul Atikah(1301193480)
 void createList_MLL(List_MLL &LM);
 address_MLL newElement_MLL(address_parent PP, address_child PC);
 void deallocate_MLL(address_MLL &PM);
@@ -37,9 +38,10 @@ void insertLast_MLL(List_MLL &LM, address_MLL PM);
 void deleteFirst_MLL(List_MLL &LM, address_MLL &PM);
 void deleteAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL &PM);
 void deleteLast_MLL(List_MLL &LM, address_MLL &PM);
-void generateID(address_child PC, address_parent &PP);
-void random();
+int generateID(address_child PC, address_parent &PP);
+int random();
 void printList_MLL(List_MLL LM);
+void printText(List_MLL LM);
 address_MLL search_MLL(List_MLL LM, string x, string y);
 void input_MLL(List_parent LP, List_child LC, List_MLL &LM);
 void delete_parent(List_MLL &LM, List_parent &LP, address_parent &PP);
