@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1588104624 source:c:\users\user\documents\github\tugasbesarstd\tubes\main.cpp
+1588259460 source:c:\users\user\documents\github\tugasbesarstd\tubes\main.cpp
 	"MLL.h"
 
-1588120674 c:\users\user\documents\github\tugasbesarstd\tubes\mll.h
+1588259897 c:\users\user\documents\github\tugasbesarstd\tubes\mll.h
 	"list_parent.h"
 	"list_child.h"
 	<stdlib.h>
@@ -12,26 +12,27 @@
 	<ctime>
 	<fstream>
 
-1588120669 c:\users\user\documents\github\tugasbesarstd\tubes\list_parent.h
+1588259689 c:\users\user\documents\github\tugasbesarstd\tubes\list_parent.h
 	<iostream>
 	<stdlib.h>
 	<conio.h>
 	<string>
 	<fstream>
 
-1588120673 c:\users\user\documents\github\tugasbesarstd\tubes\list_child.h
+1588260309 c:\users\user\documents\github\tugasbesarstd\tubes\list_child.h
 	<iostream>
 	<stdlib.h>
 	<conio.h>
 	<string>
 	<fstream>
+	<ctime>
 
 1588120671 source:c:\users\user\documents\github\tugasbesarstd\tubes\list_child.cpp
 	"list_child.h"
 
-1588120667 source:c:\users\user\documents\github\tugasbesarstd\tubes\list_parent.cpp
+1588259754 source:c:\users\user\documents\github\tugasbesarstd\tubes\list_parent.cpp
 	"list_parent.h"
 
-1588133050 source:c:\users\user\documents\github\tugasbesarstd\tubes\mll.cpp
+1588260238 source:c:\users\user\documents\github\tugasbesarstd\tubes\mll.cpp
 	"MLL.h"
 
