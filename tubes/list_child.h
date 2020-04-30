@@ -33,22 +33,22 @@ struct List_child{
     address_child last_child;
 };
 
-void create_List_child(List_child &LC);
-address_child newElement_child(child x);
-void deallocate_child(address_child &P);
+void create_List_child(List_child &LC);                                         //Balqis Sayyidahtul Atikah(1301193480)
+address_child newElement_child(child x);                                        //Balqis Sayyidahtul Atikah(1301193480)
+void deallocate_child(address_child &P);                                        //Balqis Sayyidahtul Atikah(1301193480)
 address_child input_child();//Wahyu Hauzan Rafi(1301191313)
-void insertFirst_child(List_child &LC, address_child P);
-void insertAfter_child(List_child &LC, address_child Prec, address_child P);
-void insertLast_child(List_child &LC, address_child P);
-void deleteFirst_child(List_child &LC, address_child &P);
-void deleteAfter_child(List_child &LC, address_child Prec, address_child &P);
-void deleteLast_child(List_child &LC, address_child &P);
-void printList_child(List_child LC);
+void insertFirst_child(List_child &LC, address_child P);                        //Balqis Sayyidahtul Atikah(1301193480)
+void insertAfter_child(List_child &LC, address_child Prec, address_child P);    //Balqis Sayyidahtul Atikah(1301193480)
+void insertLast_child(List_child &LC, address_child P);                         //Balqis Sayyidahtul Atikah(1301193480)
+void deleteFirst_child(List_child &LC, address_child &P);                       //Balqis Sayyidahtul Atikah(1301193480)
+void deleteAfter_child(List_child &LC, address_child Prec, address_child &P);   //Balqis Sayyidahtul Atikah(1301193480)
+void deleteLast_child(List_child &LC, address_child &P);                        //Balqis Sayyidahtul Atikah(1301193480)
+void printList_child(List_child LC);                                            //Balqis Sayyidahtul Atikah(1301193480)
 void printText_child(List_child LC);//Wahyu Hauzan Rafi(1301191313)
-address_child searchbyID_child(List_child LC, int x);
-address_child searchbyMajor(List_child LC, string x);
+address_child searchbyID_child(List_child LC, int x);                           //Balqis Sayyidahtul Atikah(1301193480)
+address_child searchbyMajor(List_child LC, string x);                           //Balqis Sayyidahtul Atikah(1301193480)
 void editData_child(List_child LC, address_child &P);//Wahyu Hauzan Rafi(1301191313)
-void deleteSearch_child(List_child &LC, address_child &P);
+void deleteSearch_child(List_child &LC, address_child &P);                      //Balqis Sayyidahtul Atikah(1301193480)
 void data_child(List_child &LC);//Wahyu Hauzan Rafi(1301191313)
 int random_child();//Wahyu Hauzan Rafi(1301191313)
 int totalPendaftar_child(List_child  LC);//Wahyu Hauzan Rafi(1301191313)
