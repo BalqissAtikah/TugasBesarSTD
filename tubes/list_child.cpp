@@ -1,11 +1,17 @@
 #include "list_child.h"
 
 void create_List_child(List_child &LC) {
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     first_child(LC) = NULL;
     last_child(LC) = NULL;
 }
 
 address_child newElement_child(child x){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_child P = new elmList_child;
     info_child(P) = x;
     next_child(P) = NULL;
@@ -13,6 +19,9 @@ address_child newElement_child(child x){
 }
 
 void deallocate_child(address_child &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     delete P;
 }
 
@@ -31,6 +40,9 @@ address_child input_child(){//Wahyu Hauzan Rafi(1301191313)
 }
 
 void insertFirst_child(List_child &LC, address_child P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if (first_child(LC) == NULL){
         first_child(LC) = P;
         last_child(LC) = P;
@@ -41,6 +53,9 @@ void insertFirst_child(List_child &LC, address_child P){
 }
 
 void insertAfter_child(List_child &LC, address_child Prec, address_child P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if (Prec != NULL){
         if(next_child(Prec) != NULL){
             next_child(P) = next_child(Prec);
@@ -53,6 +68,9 @@ void insertAfter_child(List_child &LC, address_child Prec, address_child P){
 }
 
 void insertLast_child(List_child &LC, address_child P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if (first_child(LC) == NULL) {
         first_child(LC) = P;
         last_child(LC) = P;
@@ -63,6 +81,9 @@ void insertLast_child(List_child &LC, address_child P){
 }
 
 void deleteFirst_child(List_child &LC, address_child &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if (first_child(LC) != NULL) {
         P = first_child(LC);
         first_child(LC) = next_child(P);
@@ -71,6 +92,9 @@ void deleteFirst_child(List_child &LC, address_child &P){
 }
 
 void deleteAfter_child(List_child &LC, address_child Prec, address_child &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if (Prec != NULL) {
         P = next_child(Prec);
         next_child(Prec) = next_child(P);
@@ -79,6 +103,9 @@ void deleteAfter_child(List_child &LC, address_child Prec, address_child &P){
 }
 
 void deleteLast_child(List_child &LC, address_child &P) {
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_child Q;
     if (first_child(LC) == last_child(LC)){
         P = first_child(LC);
@@ -96,6 +123,9 @@ void deleteLast_child(List_child &LC, address_child &P) {
 }
 
 void printList_child(List_child LC){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_child P;
     if (first_child(LC) == NULL){
         cout<<"===================================================================================="<<endl;
@@ -137,6 +167,9 @@ void printText_child(List_child LC){//Wahyu Hauzan Rafi(1301191313)
 }
 
 address_child searchbyID_child(List_child LC, int x){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_child P;
     if(first_child(LC) != NULL){
         P = first_child(LC);
@@ -151,6 +184,9 @@ address_child searchbyID_child(List_child LC, int x){
 }
 
 address_child searchbyMajor(List_child LC, string x){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_child P;
     if (first_child(LC) != NULL){
         P = first_child(LC);
@@ -175,6 +211,9 @@ void editData_child(List_child LC, address_child &P){//Wahyu Hauzan Rafi(1301191
 }
 
 void deleteSearch_child(List_child &LC, address_child &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_child Prec, Q;
     Q = first_child(LC);
     while(next_child(Q) != NULL){
