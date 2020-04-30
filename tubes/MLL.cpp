@@ -2,10 +2,16 @@
 //MLL Semua Yang Membuat Wahyu Hauzan Rafi(1301191313). Kecuali generateID yang membuat dasarnya Balqis Sayyidahtul Atikah(1301193480)
 
 void createList_MLL(List_MLL &LM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     first_MLL(LM) = NULL;
 }
 
 address_MLL newElement_MLL(address_parent PP, address_child PC){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_MLL PM = new elmList_MLL;
     ke_parent(PM) = PP;
     ke_child(PM) = PC;
@@ -14,10 +20,16 @@ address_MLL newElement_MLL(address_parent PP, address_child PC){
 }
 
 void deallocate_MLL(address_MLL &PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     delete PM;
 }
 
 void insertFirst_MLL(List_MLL &LM, address_MLL PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     if(first_MLL(LM) == NULL){
         first_MLL(LM) = PM;
         next_MLL(first_MLL(LM)) = first_MLL(LM);
@@ -32,6 +44,9 @@ void insertFirst_MLL(List_MLL &LM, address_MLL PM){
 }
 
 void insertAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     if(first_MLL(LM) == NULL){
         first_MLL(LM) = PM;
         next_MLL(first_MLL(LM)) = first_MLL(LM);
@@ -45,6 +60,9 @@ void insertAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL PM){
 }
 
 void insertLast_MLL(List_MLL &LM, address_MLL PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     if(first_MLL(LM) == NULL){
         first_MLL(LM) = PM;
         next_MLL(first_MLL(LM)) = first_MLL(LM);
@@ -59,6 +77,9 @@ void insertLast_MLL(List_MLL &LM, address_MLL PM){
 }
 
 void deleteFirst_MLL(List_MLL &LM, address_MLL &PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     if(first_MLL(LM) != NULL){
         PM = first_MLL(LM);
         if(next_MLL(PM) == first_MLL(LM)){
@@ -77,6 +98,9 @@ void deleteFirst_MLL(List_MLL &LM, address_MLL &PM){
 }
 
 void deleteAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL &PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     PM = next_MLL(Prec);
     prev_MLL(next_MLL(PM)) = Prec;
     next_MLL(Prec) = next_MLL(PM);
@@ -85,6 +109,9 @@ void deleteAfter_MLL(List_MLL &LM, address_MLL Prec, address_MLL &PM){
 }
 
 void deleteLast_MLL(List_MLL &LM, address_MLL &PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     if(first_MLL(LM) != NULL){
         if(next_MLL(first_MLL(LM)) == first_MLL(LM)){
             PM = first_MLL(LM);
@@ -103,6 +130,15 @@ void deleteLast_MLL(List_MLL &LM, address_MLL &PM){
 }
 
 int generateID(address_child PC, address_parent &PP){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
+    int bebas = random();
+    return (info_child(PC).ID * 1000000) + ((info_parent(PP).tahun_masuk % 1000) * 10000) + bebas;
+
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+
    /* if(info_child(PC).jurusan_pilihan=="S1 Teknik Telekomunikasi"){
         info_parent(PP).ID=1101*1000000;
     }else if(info_child(PC).jurusan_pilihan=="S1 Teknik Elektro"){
@@ -173,11 +209,12 @@ int generateID(address_child PC, address_parent &PP){
    int x = random();
    info_parent(PP).ID=info_parent(PP).ID + x;
    */
-   int bebas = random();
-   return (info_child(PC).ID * 1000000) + ((info_parent(PP).tahun_masuk % 1000) * 10000) + bebas;
 }
 
 int random(){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     srand(time(NULL));
     int randomize = 1 + (rand() % 9999);
     return randomize;
@@ -185,6 +222,9 @@ int random(){
 
 
 void printList_MLL(List_MLL LM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_MLL PM;
     if(first_MLL(LM) == NULL){
         cout<<"========================================================================="<<endl;
@@ -210,6 +250,9 @@ void printList_MLL(List_MLL LM){
 }
 
 void printText(List_MLL LM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     ofstream myfile;
     myfile.open("Data PMB.txt");
     myfile<<"=========================================================================================\n";
@@ -229,6 +272,9 @@ void printText(List_MLL LM){
 }
 
 address_MLL search_MLL(List_MLL LM, string x, string y){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     bool found;
     address_MLL PM;
     if(first_MLL(LM) != NULL){
@@ -251,6 +297,9 @@ address_MLL search_MLL(List_MLL LM, string x, string y){
 }
 
 void input_MLL(List_parent LP, List_child LC, List_MLL &LM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_parent PP;
     address_child PC;
     address_MLL PM;
@@ -287,6 +336,9 @@ void input_MLL(List_parent LP, List_child LC, List_MLL &LM){
 }
 
 void delete_parent(List_MLL &LM, List_parent &LP, address_parent &PP){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_MLL PM = first_MLL(LM);
     if(first_MLL(LM) != NULL){
         do{
@@ -300,6 +352,9 @@ void delete_parent(List_MLL &LM, List_parent &LP, address_parent &PP){
 }
 
 void delete_child(List_MLL &LM, List_child &LC, address_child &PC){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_MLL PM = first_MLL(LM);
     if(first_MLL(LM) != NULL){
         do{
@@ -313,6 +368,9 @@ void delete_child(List_MLL &LM, List_child &LC, address_child &PC){
 }
 
 void delete_MLL(List_MLL &LM, address_MLL &PM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_MLL Q, Prec;
     if(PM != NULL){
         info_child(ke_child(PM)).pendaftar--;
@@ -329,9 +387,13 @@ void delete_MLL(List_MLL &LM, address_MLL &PM){
             deleteAfter_MLL(LM, Prec, PM);
         }
     }
+    deallocate_MLL(PM);
 }
 
 void search_parent(List_MLL LM, List_parent LP, address_parent PP){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_MLL PM = first_MLL(LM);
     int i = 0;
     if(first_MLL(LM) != NULL){
@@ -351,6 +413,9 @@ void search_parent(List_MLL LM, List_parent LP, address_parent PP){
 }
 
 void search_child(List_MLL LM, List_child LC, address_child PC){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_MLL PM = first_MLL(LM);
     int i = 0;
     if(first_MLL(LM) != NULL){
@@ -370,6 +435,9 @@ void search_child(List_MLL LM, List_child LC, address_child PC){
 }
 
 void menu(List_parent LP, List_child LC, List_MLL LM){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     int pil, sum;
     parent parentcari;
     child childcari;

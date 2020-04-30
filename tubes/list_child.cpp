@@ -3,7 +3,7 @@
 void create_List_child(List_child &LC) {
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     first_child(LC) = NULL;
     last_child(LC) = NULL;
 }
@@ -11,7 +11,7 @@ void create_List_child(List_child &LC) {
 address_child newElement_child(child x){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     address_child P = new elmList_child;
     info_child(P) = x;
     next_child(P) = NULL;
@@ -21,11 +21,14 @@ address_child newElement_child(child x){
 void deallocate_child(address_child &P){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     delete P;
 }
 
-address_child input_child(){//Wahyu Hauzan Rafi(1301191313)
+address_child input_child(){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     child x;
     cin.get();
     x.ID = random_child();
@@ -35,6 +38,7 @@ address_child input_child(){//Wahyu Hauzan Rafi(1301191313)
     getline(cin, x.jurusan_pilihan);
     cout<<"Akreditasi \t: ";
     cin>>x.akreditasi;
+    x.pendaftar = 0;
 
     return newElement_child(x);
 }
@@ -42,7 +46,7 @@ address_child input_child(){//Wahyu Hauzan Rafi(1301191313)
 void insertFirst_child(List_child &LC, address_child P){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     if (first_child(LC) == NULL){
         first_child(LC) = P;
         last_child(LC) = P;
@@ -55,7 +59,7 @@ void insertFirst_child(List_child &LC, address_child P){
 void insertAfter_child(List_child &LC, address_child Prec, address_child P){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     if (Prec != NULL){
         if(next_child(Prec) != NULL){
             next_child(P) = next_child(Prec);
@@ -70,7 +74,7 @@ void insertAfter_child(List_child &LC, address_child Prec, address_child P){
 void insertLast_child(List_child &LC, address_child P){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     if (first_child(LC) == NULL) {
         first_child(LC) = P;
         last_child(LC) = P;
@@ -83,7 +87,7 @@ void insertLast_child(List_child &LC, address_child P){
 void deleteFirst_child(List_child &LC, address_child &P){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     if (first_child(LC) != NULL) {
         P = first_child(LC);
         first_child(LC) = next_child(P);
@@ -94,7 +98,7 @@ void deleteFirst_child(List_child &LC, address_child &P){
 void deleteAfter_child(List_child &LC, address_child Prec, address_child &P){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     if (Prec != NULL) {
         P = next_child(Prec);
         next_child(Prec) = next_child(P);
@@ -105,7 +109,7 @@ void deleteAfter_child(List_child &LC, address_child Prec, address_child &P){
 void deleteLast_child(List_child &LC, address_child &P) {
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     address_child Q;
     if (first_child(LC) == last_child(LC)){
         P = first_child(LC);
@@ -125,7 +129,7 @@ void deleteLast_child(List_child &LC, address_child &P) {
 void printList_child(List_child LC){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     address_child P;
     if (first_child(LC) == NULL){
         cout<<"===================================================================================="<<endl;
@@ -150,7 +154,10 @@ void printList_child(List_child LC){
         cout<<"===================================================================================="<<endl;    }
 }
 
-void printText_child(List_child LC){//Wahyu Hauzan Rafi(1301191313)
+void printText_child(List_child LC){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     ofstream myfile;
     myfile.open("Data Jurusan.txt");
     myfile<<"====================================================================================\n";
@@ -169,7 +176,7 @@ void printText_child(List_child LC){//Wahyu Hauzan Rafi(1301191313)
 address_child searchbyID_child(List_child LC, int x){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     address_child P;
     if(first_child(LC) != NULL){
         P = first_child(LC);
@@ -186,7 +193,7 @@ address_child searchbyID_child(List_child LC, int x){
 address_child searchbyMajor(List_child LC, string x){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     address_child P;
     if (first_child(LC) != NULL){
         P = first_child(LC);
@@ -200,7 +207,10 @@ address_child searchbyMajor(List_child LC, string x){
     }
 }
 
-void editData_child(List_child LC, address_child &P){//Wahyu Hauzan Rafi(1301191313)
+void editData_child(List_child LC, address_child &P){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     cout<<"Fakultas \t: ";
     cin.get();
     getline(cin,info_child(P).fakultas);
@@ -213,7 +223,7 @@ void editData_child(List_child LC, address_child &P){//Wahyu Hauzan Rafi(1301191
 void deleteSearch_child(List_child &LC, address_child &P){
     //Nama  : Balqis Sayyidahtul Atikah
     //NIM   : 1301193480
-    
+
     address_child Prec, Q;
     Q = first_child(LC);
     while(next_child(Q) != NULL){
@@ -229,9 +239,13 @@ void deleteSearch_child(List_child &LC, address_child &P){
             deleteAfter_child(LC, Prec, P);
         }
     }
+    deallocate_child(P);
 }
 
-void data_child(List_child &LC){//Wahyu Hauzan Rafi(1301191313)
+void data_child(List_child &LC){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     child x;
     address_child PC;
 
@@ -452,12 +466,19 @@ void data_child(List_child &LC){//Wahyu Hauzan Rafi(1301191313)
     insertLast_child(LC, PC);
 }
 
-int random_child(){//Wahyu Hauzan Rafi(1301191313)
+int random_child(){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
+    srand(time(NULL));
     int randomize = rand() % 9999 + 1000;
     return randomize;
 }
 
-int totalPendaftar_child(List_child LC){//Wahyu Hauzan Rafi(1301191313)
+int totalPendaftar_child(List_child LC){
+    //Nama  : Wahyu Hauzan Rafi
+    //NIM   : 1301191313
+
     address_child PC = first_child(LC);
     int total = 0;
     if(first_child(LC) != NULL){
