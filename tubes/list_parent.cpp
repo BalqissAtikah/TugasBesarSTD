@@ -1,10 +1,16 @@
 #include "list_parent.h"
 
 void createList_parent(List_parent &LP){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     first_parent(LP) = NULL;
 }
 
 address_parent newElement_parent(parent x){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_parent P = new elmList_parent;
     info_parent(P) = x;
     prev_parent(P) = NULL;
@@ -13,6 +19,9 @@ address_parent newElement_parent(parent x){
 }
 
 void deallocate_parent(address_parent &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     delete P;
 }
 
@@ -45,6 +54,9 @@ address_parent input_parent(List_parent LP){//Wahyu Hauzan Rafi(1301191313)
 }
 
 void insertFirst_parent(List_parent &LP, address_parent P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if(first_parent(LP) == NULL){
         first_parent(LP) = P;
         next_parent(P) = P;
@@ -59,6 +71,9 @@ void insertFirst_parent(List_parent &LP, address_parent P){
 }
 
 void insertAfter_parent(List_parent &LP, address_parent Prec, address_parent P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     prev_parent(next_parent(Prec)) = P;
     next_parent(P) = next_parent(Prec);
     next_parent(Prec) = P;
@@ -66,6 +81,9 @@ void insertAfter_parent(List_parent &LP, address_parent Prec, address_parent P){
 }
 
 void insertLast_parent(List_parent &LP, address_parent P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if(first_parent(LP) == NULL){
         insertFirst_parent(LP, P);
     } else {
@@ -77,6 +95,9 @@ void insertLast_parent(List_parent &LP, address_parent P){
 }
 
 void deleteFirst_parent(List_parent &LP, address_parent &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if(next_parent(first_parent(LP)) == first_parent(LP)) {
         P = first_parent(LP);
         next_parent(P) = NULL;
@@ -93,6 +114,9 @@ void deleteFirst_parent(List_parent &LP, address_parent &P){
 }
 
 void deleteAfter_parent(List_parent &LP, address_parent Prec, address_parent &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     if(Prec != NULL){
         P = next_parent(Prec);
         next_parent(Prec) = next_parent(P);
@@ -103,6 +127,9 @@ void deleteAfter_parent(List_parent &LP, address_parent Prec, address_parent &P)
 }
 
 void deleteLast_parent(List_parent &LP, address_parent &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     P = prev_parent(first_parent(LP));
     if(P == first_parent(LP)){
         deleteFirst_parent(LP, P);
@@ -115,6 +142,9 @@ void deleteLast_parent(List_parent &LP, address_parent &P){
 }
 
 void printList_parent(List_parent LP){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_parent P;
     if(first_parent(LP) == NULL){
         cout<<"============================================================================================================================================"<<endl;
@@ -158,6 +188,9 @@ void printText_parent(List_parent LP){//Wahyu Hauzan Rafi(1301191313)
 }
 
 address_parent searchbyID_parent(List_parent LP, int id_search){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_parent P;
     address_parent found = NULL;
     if(first_parent(LP) != NULL){
@@ -173,6 +206,9 @@ address_parent searchbyID_parent(List_parent LP, int id_search){
 }
 
 address_parent searchbyName(List_parent LP, string nama_search){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_parent P;
     address_parent found = NULL;
     if(first_parent(LP) != NULL){
@@ -204,6 +240,9 @@ void editData_parent(List_parent LP, address_parent &P){//Wahyu Hauzan Rafi(1301
 }
 
 void deleteSearch_parent(List_parent &LP, address_parent &P){
+    //Nama  : Balqis Sayyidahtul Atikah
+    //NIM   : 1301193480
+    
     address_parent Prec;
     if(P != NULL){
         if(P == first_parent(LP)){
