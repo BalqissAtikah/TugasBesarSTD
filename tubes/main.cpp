@@ -1,5 +1,8 @@
 #include "MLL.h"
 
+//Nama  : Wahyu Hauzan Rafi
+//NIM   : 1301191313
+
 int main()
 {
     List_parent LP;
